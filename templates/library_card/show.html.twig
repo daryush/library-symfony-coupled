@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}LibraryCard{% endblock %}
+
+{% block body %}
+    <h1>LibraryCard</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ library_card.id }}</td>
+            </tr>
+            <tr>
+                <th>UserEmail</th>
+                <td>{{ library_card.userEmail }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('library_card_index') }}">back to list</a>
+
+    <a href="{{ path('library_card_edit', {'id': library_card.id}) }}">edit</a>
+
+    {{ include('library_card/_delete_form.html.twig') }}
+{% endblock %}

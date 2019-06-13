@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BookBorrowing index{% endblock %}
+
+{% block body %}
+    <h1>BookBorrowing index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>UserEmail</th>
+                <th>BookIsbn</th>
+                <th>EndDate</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for book_borrowing in book_borrowings %}
+            <tr>
+                <td>{{ book_borrowing.id }}</td>
+                <td>{{ book_borrowing.userEmail }}</td>
+                <td>{{ book_borrowing.bookIsbn }}</td>
+                <td>{{ book_borrowing.endDate ? book_borrowing.endDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('book_borrowing_show', {'id': book_borrowing.id}) }}">show</a>
+                    <a href="{{ path('book_borrowing_edit', {'id': book_borrowing.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('book_borrowing_new') }}">Create new</a>
+{% endblock %}

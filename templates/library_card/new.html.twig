@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New LibraryCard{% endblock %}
+
+{% block body %}
+    <h1>Create new LibraryCard</h1>
+
+    {{ include('library_card/_form.html.twig') }}
+
+    <a href="{{ path('library_card_index') }}">back to list</a>
+{% endblock %}

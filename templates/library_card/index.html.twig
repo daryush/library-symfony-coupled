@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}LibraryCard index{% endblock %}
+
+{% block body %}
+    <h1>LibraryCard index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>UserEmail</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for library_card in library_cards %}
+            <tr>
+                <td>{{ library_card.id }}</td>
+                <td>{{ library_card.userEmail }}</td>
+                <td>
+                    <a href="{{ path('library_card_show', {'id': library_card.id}) }}">show</a>
+                    <a href="{{ path('library_card_edit', {'id': library_card.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('library_card_new') }}">Create new</a>
+{% endblock %}
